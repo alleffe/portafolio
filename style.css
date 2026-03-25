@@ -1,0 +1,112 @@
+/* Reset de margem, padding e box model para evitar inconsistências de navegador */
+* {
+  margin: 0; /* remove espaços padrão */
+  padding: 0; /* remove espaços padrão */
+  box-sizing: border-box; /* inclui border/padding no tamanho total */
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* fonte corporativa */
+}
+
+/* Estilo base para o HTML e body */
+html,
+body {
+  min-height: 100%; /* garante altura mínima para cobrir a área */
+  background: radial-gradient(circle at top, #041027 0%, #030303 55%); /* fundo degradê escuro */
+  color: #e5e5e5; /* cor de texto clara */
+  font-size: 17px; /* base de tamanho de fonte */
+}
+
+body {
+  display: flex; /* centraliza conteúdo em ambos os eixos */
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center; /* centraliza verticalmente */
+  padding: 24px; /* espaço da borda da janela */
+}
+
+/* Bloco principal (cartão) */
+main {
+  width: min(100%, 720px); /* largura responsiva com limite */
+  text-align: center; /* centraliza texto */
+  background: rgba(0, 0, 0, 0.55); /* fundo semi-transparente */
+  border-radius: 16px; /* cantos arredondados */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* borda leve */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* sombra profunda */
+  padding: 40px; /* espaçamento interno */
+}
+
+header h1 {
+  font-size: clamp(1.8rem, 3vw, 3rem); /* responsivo entre 1.8rem e 3rem */
+  font-weight: 800; /* negrito forte */
+  margin-bottom: 8px; /* espaço abaixo do título */
+}
+
+header p {
+  color: #a9a9a9; /* texto de suporte mais suave */
+  font-size: 1rem; /* tamanho legível */
+  margin-bottom: 28px; /* espaço abaixo do subtítulo */
+}
+
+.profiles {
+  display: grid; /* layout em grade */
+  gap: 18px; /* espaçamento entre cards */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* colunas adaptativas */
+  justify-items: center; /* centraliza cada item */
+}
+
+.profile {
+  width: 140px; /* largura fixa do card */
+  border-radius: 12px; /* cantos arredondados */
+  background: rgba(20, 20, 20, 0.65); /* tom escuro dentro do cartão */
+  border: 2px solid transparent; /* borda invisível para transição */
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; /* animação suave */
+}
+
+.profile:hover,
+.profile:focus-within {
+  border-color: #0914e5; /* borda destacada no hover/foco */
+  transform: translateY(-2px); /* elevação visual */
+  box-shadow: 0 12px 25px rgba(9, 159, 229, 0.35); /* sombra leve no hover */
+}
+
+.profile figure {
+  margin: 0; /* remove margem padrão */
+  display: flex; /* alinhamento interno com flex */
+  flex-direction: column; /* itens verticalmente */
+  align-items: center; /* centraliza horizontalmente */
+  gap: 10px; /* espaço entre imagem e texto */
+  padding: 16px; /* preenchimento interno */
+}
+
+.profile img {
+  width: 100px; /* largura da imagem */
+  height: 100px; /* altura da imagem */
+  object-fit: cover; /* cobre o contêiner mantendo proporção */
+  border-radius: 50%; /* faz círculo */
+  border: 2px solid rgba(203, 36, 36, 0.25); /* borda sutil */
+}
+
+.profile figcaption {
+  color: #fff; /* texto claro */
+  font-size: 0.95rem; /* tamanho do texto do perfil */
+  font-weight: 700; /* texto mais pesado */
+}
+
+/* Ajustes de responsividade para telas maiores */
+@media (min-width: 768px) {
+  body {
+    padding: 48px; /* mais espaço em desktop */
+  }
+
+  .profiles {
+    gap: 22px; /* mais espaçamento entre cards */
+  }
+
+  .profile {
+    width: 160px; /* cards maiores */
+  }
+
+  .profile img {
+    width: 110px; /* imagem maior */
+    height: 110px; /* imagem maior */
+  }
+}
+
