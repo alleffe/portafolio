@@ -17,20 +17,78 @@ body {
 
 body {
   display: flex; /* centraliza conteúdo em ambos os eixos */
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center; /* centraliza verticalmente */
+  flex-direction: column; /* empilha header e perfis verticalmente */
+  justify-content: center; /* centraliza verticalmente */
+  align-items: center; /* centraliza horizontalmente */
   padding: 24px; /* espaço da borda da janela */
+  gap: 20px; /* espaço entre header e perfis */
 }
 
-/* Bloco principal (cartão) */
-main {
-  width: min(100%, 720px); /* largura responsiva com limite */
-  text-align: center; /* centraliza texto */
-  background: rgba(0, 0, 0, 0.55); /* fundo semi-transparente */
-  border-radius: 16px; /* cantos arredondados */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* borda leve */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* sombra profunda */
-  padding: 40px; /* espaçamento interno */
+/* Bloco principal removido, conteúdo direto no body */
+
+/* Estilo do header */
+header {
+  text-align: center; /* centraliza texto do header */
+}
+
+/* Botão de alternância de tema */
+#theme-toggle {
+  position: fixed; /* fixo no canto */
+  top: 20px; /* topo */
+  right: 20px; /* direita */
+  background: rgba(0, 0, 0, 0.7); /* fundo semi-transparente */
+  color: #fff; /* texto branco */
+  border: none; /* sem borda */
+  border-radius: 50%; /* circular */
+  width: 50px; /* largura */
+  height: 50px; /* altura */
+  font-size: 24px; /* tamanho do ícone */
+  cursor: pointer; /* cursor pointer */
+  transition: background 0.3s ease; /* transição */
+  z-index: 1000; /* acima de outros elementos */
+}
+
+#theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.9); /* fundo mais escuro no hover */
+}
+
+/* Estilos para light mode */
+html.light-mode,
+body.light-mode {
+  background: linear-gradient(to bottom, #f0f0f0 0%, #ffffff 100%); /* fundo claro */
+  color: #000; /* texto escuro */
+}
+
+html.light-mode {
+  background: linear-gradient(to bottom, #f0f0f0 0%, #ffffff 100%) !important; /* fundo claro em toda tela */
+}
+
+body.light-mode .profile {
+  background: rgba(255, 255, 255, 0.8); /* fundo claro para perfis */
+  border: 2px solid rgba(0, 0, 0, 0.1); /* borda leve */
+}
+
+body.light-mode .profile:hover,
+body.light-mode .profile:focus-within {
+  border-color: #007bff; /* borda azul no hover */
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.35); /* sombra azul */
+}
+
+body.light-mode .profile figcaption {
+  color: #000; /* texto escuro */
+}
+
+body.light-mode header p {
+  color: #666; /* texto de suporte */
+}
+
+body.light-mode #theme-toggle {
+  background: rgba(255, 255, 255, 0.8); /* fundo claro */
+  color: #000; /* ícone escuro */
+}
+
+body.light-mode #theme-toggle:hover {
+  background: rgba(255, 255, 255, 1); /* fundo branco no hover */
 }
 
 header h1 {
@@ -107,6 +165,65 @@ header p {
   .profile img {
     width: 110px; /* imagem maior */
     height: 110px; /* imagem maior */
+  }
+}
+
+/* Ajustes para dispositivos móveis pequenos */
+@media (max-width: 480px) {
+  body {
+    padding: 16px; /* menos espaço em telas pequenas */
+  }
+
+  header h1 {
+    font-size: 1.5rem; /* fonte menor */
+  }
+
+  header p {
+    font-size: 0.9rem; /* fonte menor */
+    margin-bottom: 20px; /* ajuste de margem */
+  }
+
+  .profiles {
+    gap: 12px; /* menos espaçamento */
+  }
+
+  .profile {
+    width: 120px; /* cards menores */
+  }
+
+  .profile img {
+    width: 80px; /* imagem menor */
+    height: 80px; /* imagem menor */
+  }
+
+  .profile figcaption {
+    font-size: 0.85rem; /* texto menor */
+  }
+}
+
+/* Ajustes para desktops e telas grandes */
+@media (min-width: 1024px) {
+  body {
+    padding: 64px; /* mais espaço em telas grandes */
+  }
+
+  main {
+    width: min(100%, 900px); /* largura maior */
+    padding: 50px; /* mais padding */
+  }
+
+  .profiles {
+    gap: 24px; /* mais espaçamento */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+  }
+
+  .profile {
+    width: 180px; /* cards ainda maiores */
+  }
+
+  .profile img {
+    width: 130px; /* imagem maior */
+    height: 130px; /* imagem maior */
   }
 }
 
