@@ -6,6 +6,15 @@
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* fonte corporativa */
 }
 
+.container {
+  font-size: 8.9rem; /* tamanho do título */
+  font-weight: 700; /* negrito para títulos */
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* fonte corporativa */
+  justify-content: center; /* centraliza horizontalmente */
+  display: flex; /* usa flex para centralizar */
+  color: darkred; /* cor do título */
+}
+
 /* Estilo base para o HTML e body */
 html,
 body {
